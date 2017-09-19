@@ -20,3 +20,7 @@
 #  name = "github.com/x/y"
 #  version = "2.4.0"
 
+
+[[constraint]]
+  name = "github.com/coreos/matchbox"
+  revision = "7647a5d0955198af1466939dcb73a50cd1b69e85"

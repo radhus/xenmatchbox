@@ -6,6 +6,7 @@ import (
 
 	kingpin "gopkg.in/alecthomas/kingpin.v2"
 
+	"github.com/radhus/xenmatchbox/expander"
 	"github.com/radhus/xenmatchbox/fetcher"
 	"github.com/radhus/xenmatchbox/xen"
 )
@@ -72,6 +73,11 @@ func main() {
 	if err != nil {
 		log.Fatal("Couldn't fetch information:", err)
 	}
+
+	fetched.Args = expander.ExpandArguments(
+		fetched.Args,
+		*config.lookup,
+	)
 
 	simple0 := xen.OutputSimple0(fetched)
 	output.Write(simple0)

@@ -39,6 +39,19 @@ This will perform a lookup of the matchbox profile based on the MAC address `00:
 
 *NOTE:* xl currently requires a disk to be configured for the domU to use the `bootloader` parameter...
 
+### Argument templating
+
+The current examples in the [matchbox](https://github.com/coreos/matchbox) works by using variables in the return args that are expanded by either iPXE or Grub.
+
+Similar functionality exists in `xenmatchbox`. Using the [`text/template`](https://golang.org/pkg/text/template/) package, variables listed in `--lookup` are expanded.
+
+Example:
+```
+"args": [
+  "coreos.config.url=http://matchbox/ignition?mac={{ .mac }}"
+]
+```
+
 ### Start domU
 
 With configuration as above, it should be as easy as running `xl create /path/to/domu.cfg`.

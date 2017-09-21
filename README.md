@@ -28,6 +28,9 @@ Remove eventual `kernel`, `ramdisk` and `extra` parameters and provide the bootl
 ```
 bootloader = '/path/to/xenmatchbox'
 bootloader_args = [
+  '--server', 'matchbox.foo',
+  '--httpport', '8080',
+  '--grpcport', '8081',
   '--ca', '/path/to/ca.crt',
   '--cert', '/path/to/client.crt',
   '--key', '/path/to/client.key',
